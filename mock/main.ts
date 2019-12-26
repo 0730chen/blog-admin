@@ -1,10 +1,15 @@
 import Mock from 'mockjs'
 //自定义数据
 // 注册接口
+const tokens = {
+    admin: "admin"
+}
 Mock.mock('/user/login', (req, res) => {
+    let {admin} = req.body
     const data = {
         state: 'success',
-        code: 66666
+        code: 66666,
+        token: tokens.admin
     }
     return data
 })

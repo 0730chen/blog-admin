@@ -5,6 +5,7 @@ const token  ={
 }
 export function getToken(params: any){
     console.log(params)
+    Cookies.set('admin',token)
     return request({
         url:'/user/token',
         method:'get',

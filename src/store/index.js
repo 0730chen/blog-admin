@@ -1,14 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getInfo, getToken, getLogin } from '../Api/user';
+import { getInfo, getLogin, getToken } from '../Api/user';
+import { getTokens, setToken } from "@/Api/auth";
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         admin: '',
         password: '',
         logined: false,
-        token: '',
-        name: ''
+        token: getTokens(),
+        name: '',
+        Nav: '文档',
     },
     mutations: {
         Set_admin: ((state, params) => {
@@ -18,10 +20,17 @@ export default new Vuex.Store({
             state.logined = true;
         }),
         Set_Token: (state, token) => {
+            console.log(token);
             state.token = token;
         },
         Set_Name: (state, name) => {
             state.name = name;
+        },
+        Set_Nav: (state, nav) => {
+            state.Nav = nav;
+        },
+        Get_admin: (state, admin) => {
+            state.admin = admin;
         }
     },
     actions: {
@@ -35,13 +44,22 @@ export default new Vuex.Store({
                 console.log(res);
             });
         },
-        Get_login: (commit, state) => {
-            let { admin, password } = commit.state;
-            let params = { admin, password };
-            getLogin(params).then(res => {
-                console.log(res);
+        Get_login: ({ commit, state }) => {
+            return new Promise((resolve, reject) => {
+                let { admin, password } = state;
+                let params = { admin, password };
+                localStorage.setItem('admin', admin);
+                getLogin(params).then(res => {
+                    const { data } = res;
+                    commit('Set_Token', data.token);
+                    setToken(data.token);
+                    resolve();
+                });
+            });
+        },
+        Get_NavName: ({ commit, state }) => {
+            return new Promise((resolve, reject) => {
             });
         }
-    },
-    modules: {}
+    }
 });
