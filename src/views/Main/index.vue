@@ -10,11 +10,13 @@
     import Component from "vue-class-component"
     import TopBar from "@/views/TopSidebar/index.vue"
     import LeftBar from '@/views/LeftSidebar/index.vue'
+    import Container from '@/views/Container/index.vue'
 
     @Component({
-        components:{
+        components: {
             TopBar,
-            LeftBar
+            LeftBar,
+            Container
         }
     })
     export default class Main extends Vue {
@@ -23,7 +25,9 @@
                 message: '主界面'
             }
         }
-        created(){}
+
+        created() {
+        }
 
     }
 </script>

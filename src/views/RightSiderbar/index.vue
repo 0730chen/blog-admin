@@ -1,7 +1,7 @@
 <template>
     <div class="right-bar">
-        <div class="search" @click="InputShow">
-            <svg class="icon" aria-hidden="true">
+        <div class="search">
+            <svg class="icon" aria-hidden="true" @click.prevent="InputShow">
                 <use xlink:href="#icon-fangdajing"></use>
             </svg>
             <el-input
@@ -67,10 +67,9 @@
         line-height: 50px;
         right: 200px;
         align-items: center;
-
         .search {
             display: inline-block;
-            padding: 0 10px;
+            padding: 0 30px;
             height: 100%;
             font-size: 18px;
             color: #5a5e66;
@@ -79,13 +78,19 @@
         }
 
         .fullscreen {
-            padding: 0 10px;
+            padding: 0 30px;
             cursor: pointer;
         }
 
         .el-input {
             width: auto;
             padding-left: 10px;
+        }
+        .avatar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 30px;
         }
     }
 

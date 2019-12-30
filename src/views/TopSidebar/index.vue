@@ -1,6 +1,8 @@
 <template>
     <div class="topBar">
-        <div class="nav-title">{{NavName}}</div>
+        <div class="nav-title">{{NavName}}
+            <div class="child-nav" v-if="Show">&nbsp;{{NavChildren}}</div>
+        </div>
         <Rightbar></Rightbar>
     </div>
 </template>
@@ -11,35 +13,46 @@
     import Rightbar from "@/views/RightSiderbar/index.vue";
 
     @Component({
-        components:{
+        components: {
             Rightbar
         }
     })
 
     export default class TopBar extends Vue {
         navName: string | undefined
+        navChild: string | undefined
 
         private data() {
             return {
-                navName: this.$store.state.Nav
+                navName: this.$store.state.Nav,
+                navChild: this.$store.state.ChildName,
             }
         }
 
         created() {
         }
 
-        NameBar() {
-            return this.$store.state.Nav
-        }
 
         get NavName() {
             this.navName = this.$store.state.Nav
             return this.navName
         }
 
+        get NavChildren() {
+            this.navChild = this.$store.state.ChildName
+            return this.navChild
+        }
+        get Show(){
+            return this.$store.state.ChildNavState
+        }
+
         @Watch('navName', {immediate: true, deep: true})
         onnavNameChange(val: string, oldvalue: string) {
 
+        }
+
+        @Watch('navChild', {immediate: true})
+        onnavChildNav() {
         }
 
     }
@@ -53,6 +66,7 @@
         background: #fff;
         -webkit-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
         box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
         .nav-title {
             height: 100%;
             position: absolute;
@@ -62,5 +76,8 @@
             align-items: center;
             margin-left: 50px;
         }
+    }
+    .child-nav{
+        padding-left: 10px;
     }
 </style>
