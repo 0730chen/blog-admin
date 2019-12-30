@@ -25,10 +25,42 @@ const routes = [
     {
         path: '/main',
         name: 'main',
-        component: () => import('@/views/Main/index.vue')
-    }
+        component: () => import('@/views/Main/index.vue'),
+        children: [
+            {
+                path: '/main/document',
+                name: 'document',
+                component: () => import('@/views/Container/Document/index.vue')
+            },
+            {
+                path: '/main/guide',
+                name: 'guide',
+                component: () => import('@/views/Container/Guide/index.vue')
+            },
+            {
+                path: '/main/icon',
+                name: 'icon',
+                component: () => import('@/views/Container/Icon/index.vue')
+            },
+            {
+                path: '/main/component',
+                name: 'component',
+                component: () => import('@/views/Container/Component/index.vue')
+            },
+            {
+                path: '/main/table',
+                name: 'table',
+                component: () => import('@/views/Container/Table/index.vue')
+            },
+            {
+                path: '/main/example',
+                name: 'example',
+                component: () => import('@/views/Container/Example/index.vue')
+            }
 
 
+        ]
+    },
 ]
 
 

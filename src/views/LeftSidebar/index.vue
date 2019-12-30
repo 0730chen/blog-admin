@@ -1,7 +1,7 @@
 <template>
     <div class="leftBar">
         <div class="item" v-for="(item,index) in allMenu" :key="index" @click.self="HandleNavName(index)">
-            {{item.title}}
+            <router-link :to=item.href>{{item.title}}</router-link>
             <div v-for="e in item.children" v-show="item.show" class="item-children" @click=HandleNavChild>
                 {{e.title}}
             </div>
@@ -25,6 +25,7 @@
                 allMenu: [
                     {
                         title: '文档',
+                        href: '/main/document',
                         children: [
                             {
                                 title: '用户文档'
@@ -37,6 +38,7 @@
                     },
                     {
                         title: '指南',
+                        href: '/main/guide',
                         children: [
                             {
                                 title: '用户指南'
@@ -49,6 +51,7 @@
                     },
                     {
                         title: '图标',
+                        href: '/main/icon',
                         children: [
                             {
                                 title: '图标收集'
@@ -58,49 +61,63 @@
                     },
                     {
                         title: '组件',
+                        href: '/main/component',
                     },
                     {
                         title: '表格',
+                        href: '/main/table',
                     },
                     {
                         title: '例子',
+                        href: '/main/example',
                     },
                     {
                         title: '数据库',
+                        href: '/main/guide',
                     },
                     {
                         title: 'Icons',
+                        href: '/main/guide',
                     },
                     {
                         title: 'Charts',
+                        href: '/main/guide',
                     },
                     {
                         title: 'Example',
+                        href: '/main/guide',
                     },
                     {
                         title: 'Tab',
+                        href: '/main/guide',
                     },
                     {
                         title: 'Error Pages',
+                        href: '/main/guide',
                     },
                     {
                         title: 'Error Log',
+                        href: '/main/guide',
                     },
                     {
                         title: '我和你',
+                        href: '/main/guide',
                     },
                     {
                         title: '心连心',
+                        href: '/main/guide',
 
 
                     },
                     {
                         title: 'Theme',
+                        href: '/main/guide',
 
 
                     },
                     {
                         title: 'PDF',
+                        href: '/main/guide',
 
                     }
                 ]
@@ -116,11 +133,11 @@
             this.$store.commit('Set_Nav', this.allMenu[e].title)
             this.allMenu[e].show = !this.allMenu[e].show
             //判断是否存在子选项
-            if(!this.allMenu[e].children){
-                    console.log('不存在子项')
-                this.$store.commit('Set_Nav_ChildState',false)
-            }else{
-                this.$store.commit('Set_Nav_ChildState',true)
+            if (!this.allMenu[e].children) {
+                console.log('不存在子项')
+                this.$store.commit('Set_Nav_ChildState', false)
+            } else {
+                this.$store.commit('Set_Nav_ChildState', true)
             }
         }
 

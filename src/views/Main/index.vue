@@ -2,6 +2,7 @@
     <div class="main">
         <TopBar/>
         <LeftBar/>
+        <Container/>
     </div>
 </template>
 <script lang="ts">
