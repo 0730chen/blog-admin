@@ -1,9 +1,10 @@
 <template>
     <div class="leftBar">
+        <div class="left-title">博客管理面板</div>
         <div class="item" v-for="(item,index) in allMenu" :key="index" @click.self="HandleNavName(index)">
             <router-link :to=item.href>{{item.title}}</router-link>
             <div v-for="e in item.children" v-show="item.show" class="item-children" @click=HandleNavChild>
-                {{e.title}}
+                <router-link :to=e.href>{{e.title}}</router-link>
             </div>
         </div>
     </div>
@@ -28,10 +29,12 @@
                         href: '/main/document',
                         children: [
                             {
-                                title: '用户文档'
+                                title: '用户文档',
+                                href: '/main/document/userdoc'
                             },
                             {
-                                title: '项目文档'
+                                title: '项目文档',
+                                href: '/main/document/demo'
                             }
                         ],
                         show: true,
@@ -41,10 +44,12 @@
                         href: '/main/guide',
                         children: [
                             {
-                                title: '用户指南'
+                                title: '用户指南',
+                                href: '/main/document/userdoc'
                             },
                             {
-                                title: '项目指南'
+                                title: '项目指南',
+                                href: '/main/document/userdoc'
                             }
                         ],
                         show: false,
@@ -54,7 +59,8 @@
                         href: '/main/icon',
                         children: [
                             {
-                                title: '图标收集'
+                                title: '图标收集',
+                                href: '/main/document/userdoc'
                             }
                         ],
                         show: false,
@@ -73,52 +79,39 @@
                     },
                     {
                         title: '数据库',
-                        href: '/main/guide',
-                    },
-                    {
-                        title: 'Icons',
-                        href: '/main/guide',
+                        href: '/main/database',
                     },
                     {
                         title: 'Charts',
-                        href: '/main/guide',
-                    },
-                    {
-                        title: 'Example',
-                        href: '/main/guide',
+                        href: '/main/charts',
                     },
                     {
                         title: 'Tab',
-                        href: '/main/guide',
+                        href: '/main/tab',
                     },
                     {
                         title: 'Error Pages',
-                        href: '/main/guide',
+                        href: '/main/errorpage',
                     },
                     {
                         title: 'Error Log',
-                        href: '/main/guide',
+                        href: '/main/errorlog',
                     },
                     {
-                        title: '我和你',
-                        href: '/main/guide',
+                        title: '动画',
+                        href: '/main/animation',
                     },
                     {
-                        title: '心连心',
-                        href: '/main/guide',
-
-
+                        title: 'Webpack',
+                        href: '/main/webpack',
                     },
                     {
                         title: 'Theme',
-                        href: '/main/guide',
-
-
+                        href: '/main/theme',
                     },
                     {
                         title: 'PDF',
-                        href: '/main/guide',
-
+                        href: '/main/pdf',
                     }
                 ]
             }
@@ -126,7 +119,7 @@
 
         @Watch('show', {immediate: true, deep: true})
         onShow() {
-            console.log('show变了')
+            //观察show的变化
         }
 
         HandleNavName(e: number) {
@@ -189,5 +182,9 @@
 
     .item-children:hover {
         background-color: rgb(0, 21, 40);
+    }
+    .left-title{
+        color: white;
+        padding: 20px 0px;
     }
 </style>

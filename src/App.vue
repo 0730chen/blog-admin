@@ -16,7 +16,8 @@
 
         @Watch('$route', {immediate: true, deep: true})
         onnavNameChange() {
-            console.log('路由变化了')
+            // console.log('路由变化了')
+            //路由变化就从lcalstorage获取token
           this.$store.commit('Get_admin',localStorage.getItem('admin'))
         }
     }

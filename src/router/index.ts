@@ -30,7 +30,20 @@ const routes = [
             {
                 path: '/main/document',
                 name: 'document',
-                component: () => import('@/views/Container/Document/index.vue')
+                component: () => import('@/views/Container/Document/index.vue'),
+                children: [
+                    {
+                        path: '/main/document/UserDoc',
+                        name: 'UserDoc',
+                        component: () => import('@/views/Container/Document/UserDoc.vue')
+                    },
+                    {
+                        path: '/main/document/demo',
+                        name: 'demo',
+                        component: () => import('@/views/Container/Document/Demo.vue')
+                    }
+
+                ]
             },
             {
                 path: '/main/guide',
@@ -56,11 +69,54 @@ const routes = [
                 path: '/main/example',
                 name: 'example',
                 component: () => import('@/views/Container/Example/index.vue')
+            },
+            {
+                path: '/main/database',
+                name: 'database',
+                component: () => import('@/views/Container/Database/index.vue')
+            },
+            {
+                path: '/main/charts',
+                name: 'charts',
+                component: () => import('@/views/Container/Charts/index.vue')
+            },
+            {
+                path: '/main/tab',
+                name: 'tab',
+                component: () => import('@/views/Container/Tab/index.vue')
+            },
+            {
+                path: '/main/errorpage',
+                name: 'errorpage',
+                component: () => import('@/views/Container/Errorpage/index.vue')
+            },
+            {
+                path: '/main/errorlog',
+                name: 'errorlog',
+                component: () => import('@/views/Container/ErrorLog/index.vue')
+            },
+            {
+                path: '/main/animation',
+                name: 'animation',
+                component: () => import('@/views/Container/Animation/index.vue')
+            },
+            {
+                path: '/main/webpack',
+                name: 'webpack',
+                component: () => import('@/views/Container/Webpack/index.vue')
+            },
+            {
+                path: '/main/theme',
+                name: 'theme',
+                component: () => import('@/views/Container/Theme/index.vue')
+            },
+            {
+                path: '/main/pdf',
+                name: 'pdf',
+                component: () => import('@/views/Container/PDF/index.vue')
             }
-
-
         ]
-    },
+    }
 ]
 
 
