@@ -58,7 +58,14 @@ const routes = [
             {
                 path: '/main/component',
                 name: 'component',
-                component: () => import('@/views/Container/Component/index.vue')
+                component: () => import('@/views/Container/Component/index.vue'),
+                children: [
+                    {
+                        path: '/main/component/upload',
+                        name: 'upload',
+                        component: () => import('@/views/Container/Component/Upload.vue')
+                    }
+                ]
             },
             {
                 path: '/main/table',

@@ -22,10 +22,9 @@
 
         private data() {
             return {
-                show: false,
                 allMenu: [
                     {
-                        title: '文档',
+                        title: '全部文章',
                         href: '/main/document',
                         children: [
                             {
@@ -57,17 +56,12 @@
                     {
                         title: '图标',
                         href: '/main/icon',
-                        children: [
-                            {
-                                title: '图标收集',
-                                href: '/main/document/userdoc'
-                            }
-                        ],
                         show: false,
                     },
                     {
                         title: '组件',
                         href: '/main/component',
+                        show: false
                     },
                     {
                         title: '表格',
@@ -127,7 +121,6 @@
             this.allMenu[e].show = !this.allMenu[e].show
             //判断是否存在子选项
             if (!this.allMenu[e].children) {
-                console.log('不存在子项')
                 this.$store.commit('Set_Nav_ChildState', false)
             } else {
                 this.$store.commit('Set_Nav_ChildState', true)
@@ -135,7 +128,6 @@
         }
 
         HandleNavChild(e: any) {
-            console.log(e.target.innerText)
             this.$store.commit('Set_Nav_Child', e.target.innerText)
         }
 
@@ -183,7 +175,8 @@
     .item-children:hover {
         background-color: rgb(0, 21, 40);
     }
-    .left-title{
+
+    .left-title {
         color: white;
         padding: 20px 0px;
     }

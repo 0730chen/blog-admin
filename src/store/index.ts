@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import {getInfo, getLogin, getToken} from '../Api/user'
 import {getTokens, setToken} from "@/Api/auth";
+import {GetAllArt} from '@/Api/Article.ts'
+
 Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
@@ -9,10 +11,10 @@ export default new Vuex.Store({
         password: '',
         logined: false,
         token: getTokens(),
-        name:'',
-        Nav:'文档',
-        ChildName:'',
-        ChildNavState:true
+        name: '',
+        Nav: '文档',
+        ChildName: '',
+        ChildNavState: true
     },
     mutations: {
         Set_admin: ((state, params) => {
@@ -28,16 +30,16 @@ export default new Vuex.Store({
         Set_Name: (state, name) => {
             state.name = name
         },
-        Set_Nav:(state,nav)=>{
+        Set_Nav: (state, nav) => {
             state.Nav = nav
         },
-        Set_Nav_Child:(state,child)=>{
+        Set_Nav_Child: (state, child) => {
             state.ChildName = child
         },
-        Get_admin:(state,admin)=>{
+        Get_admin: (state, admin) => {
             state.admin = admin
         },
-        Set_Nav_ChildState:(state,bool)=>{
+        Set_Nav_ChildState: (state, bool) => {
             state.ChildNavState = bool
         }
     },
@@ -56,7 +58,7 @@ export default new Vuex.Store({
             return new Promise((resolve, reject) => {
                 let {admin, password} = state
                 let params = {admin, password}
-                localStorage.setItem('admin',admin)
+                localStorage.setItem('admin', admin)
                 getLogin(params).then(res => {
                     const {data} = res
                     commit('Set_Token', data.token)
@@ -65,10 +67,18 @@ export default new Vuex.Store({
                 })
             })
         },
-        Get_NavName:({commit,state})=>{
-            return new Promise((resolve,reject)=>{
+        Get_NavName: ({commit, state}) => {
+            return new Promise((resolve, reject) => {
 
-            })}
+            })
+        },
+        Get_AllArt: (commit) => {
+            return new Promise((resolve, reject) => {
+                GetAllArt().then(res => {
+                    resolve(res.data)
+                })
+            })
+        }
 
     }
 })

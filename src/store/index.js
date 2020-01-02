@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { getInfo, getLogin, getToken } from '../Api/user';
 import { getTokens, setToken } from "@/Api/auth";
+import { GetAllArt } from '@/Api/Article.ts';
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
@@ -11,6 +12,8 @@ export default new Vuex.Store({
         token: getTokens(),
         name: '',
         Nav: '文档',
+        ChildName: '',
+        ChildNavState: true
     },
     mutations: {
         Set_admin: ((state, params) => {
@@ -29,8 +32,14 @@ export default new Vuex.Store({
         Set_Nav: (state, nav) => {
             state.Nav = nav;
         },
+        Set_Nav_Child: (state, child) => {
+            state.ChildName = child;
+        },
         Get_admin: (state, admin) => {
             state.admin = admin;
+        },
+        Set_Nav_ChildState: (state, bool) => {
+            state.ChildNavState = bool;
         }
     },
     actions: {
@@ -59,6 +68,13 @@ export default new Vuex.Store({
         },
         Get_NavName: ({ commit, state }) => {
             return new Promise((resolve, reject) => {
+            });
+        },
+        Get_AllArt: (commit) => {
+            return new Promise((resolve, reject) => {
+                GetAllArt().then(res => {
+                    resolve(res.data);
+                });
             });
         }
     }

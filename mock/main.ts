@@ -31,3 +31,11 @@ Mock.mock('/user/info', (req, res) => {
     }
     return data
 })
+Mock.mock('/api/article', (req, res) => {
+    let data = [
+        {title: '第一个文章', context: '第一个', data: new Date()},
+        {title: '第二篇文章', context: '第二个', data: new Date()},
+        {title: '第三篇文章', context: '第三个', data: new Date()}
+    ]
+    return data
+})
