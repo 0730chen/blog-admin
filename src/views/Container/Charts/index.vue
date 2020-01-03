@@ -21,9 +21,7 @@
         }
 
         createChart(chartId: string, ChartData: any) {
-            console.log(chartId)
             let ctx: any = document.getElementById(chartId)
-            console.log(ctx)
             const mycharts = new Chart(ctx, {
                 type: ChartData.type,
                 data: ChartData.data,

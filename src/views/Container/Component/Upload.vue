@@ -55,3 +55,8 @@
         }
     }
 </script>
+<style lang="scss"scoped>
+    .upload{
+        margin-left: 250px;
+    }
+</style>
