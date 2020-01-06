@@ -62,6 +62,11 @@ const routes = [
                         path: '/main/component/upload',
                         name: 'upload',
                         component: () => import('@/views/Container/Component/Upload.vue')
+                    },
+                    {
+                        path: '/main/Picker',
+                        name: 'DataPicker',
+                        component: () => import('@/views/Container/Component/DataPicker.vue')
                     }
                 ]
             },
@@ -126,6 +131,9 @@ const routes = [
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes,
+    scrollBehavior: (to, from, savedPosition) => {
+        return { x: 0, y: 0 };
+    }
 });
 export default router;

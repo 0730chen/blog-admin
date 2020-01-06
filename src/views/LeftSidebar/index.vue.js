@@ -45,6 +45,9 @@ let LeftBar = class LeftBar extends Vue {
                 {
                     title: '组件',
                     href: '/main/component',
+                    children: [
+                        { title: '日历', href: 'Picker' },
+                    ],
                     show: false
                 },
                 {

@@ -61,6 +61,13 @@
                     {
                         title: '组件',
                         href: '/main/component',
+                        children: [
+                            {
+                                title: '日历',
+                                href: '/main/component/Picker'
+                            }
+
+                        ],
                         show: false
                     },
                     {

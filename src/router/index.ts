@@ -61,9 +61,14 @@ const routes = [
                 component: () => import('@/views/Container/Component/index.vue'),
                 children: [
                     {
-                        path: '/main/component/upload',
+                        path: '/main/component',
                         name: 'upload',
                         component: () => import('@/views/Container/Component/Upload.vue')
+                    },
+                    {
+                        path: '/main/component/Picker',
+                        name: 'DataPicker',
+                        component: () => import('@/views/Container/Component/DataPicker.vue')
                     }
                 ]
             },

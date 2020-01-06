@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Upload/>
+        <router-view/>
     </div>
 </template>
 <script lang="ts">
