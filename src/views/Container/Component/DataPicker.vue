@@ -84,6 +84,7 @@
 
         ClickRight() {
             this.Year = this.Year + 1
+            this.FullDay(this.Year, this.Mouth)
         }
 
         ClickRightMouth() {
@@ -97,6 +98,7 @@
 
         ClickLeft() {
             this.Year = this.Year - 1
+            this.FullDay(this.Year, this.Mouth)
         }
 
         ClickLeftMouth() {
